@@ -1,6 +1,7 @@
 import { useLoaderData } from "react-router-dom";
 import { useEffect } from "react";
 import Chat from "../components/chat.js";
+import GameState from "../components/gameState";
 
 const Play = () => {
   const { socket } = useLoaderData();
@@ -12,8 +13,8 @@ const Play = () => {
   }, [socket]);
 
   return (
-    <div>
-      <h1 className="text-3xl font-bold justify-center text-center">In Game</h1>
+    <div className="flex h-screen flex-col justify-between">
+      <GameState />
       <Chat socket={socket} />
     </div>
   );
