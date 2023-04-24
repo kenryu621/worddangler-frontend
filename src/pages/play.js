@@ -1,8 +1,15 @@
 import { useLoaderData } from "react-router-dom";
+import { useEffect } from "react";
 import Chat from "../components/chat.js";
 
 const Play = () => {
   const { socket } = useLoaderData();
+
+  useEffect(() => {
+    socket.on("new-round", (res) => {
+      localStorage.setItem("session", JSON.stringify(res));
+    });
+  }, [socket]);
 
   return (
     <div>
